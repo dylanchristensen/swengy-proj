@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}View Path{% endblock title %}
+
+{% block content %}
+<div class="see-the-path" data-color-mode="SDS-light">
+    {% if paths %}
+        <!-- List all paths -->
+        <section class="hero-basic">
+            <h1 class="title-2">Available Paths</h1>
+            <ul>
+                {% for path in paths %}
+                    <li>
+                        <h2>{{ path.name }}</h2>
+                        <p>{{ path.description }}</p>
+                        <a href="/path/?path_id={{ path.id }}" class="choose-button">View Path</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    {% else %}
+        <!-- Show specific path -->
+        <section class="hero-basic">
+            <h1 class="title-2">{{ path.name }}</h1>
+            <p class="subtitle">{{ path.description }}</p>
+        </section>
+
+        <!-- Cards Section -->
+        <div class="cards">
+            <div class="card">
+                <h4>Prep Video</h4>
+                <p>Watch videos to help you get started on this path.</p>
+                <a href="{% url 'dynamic_content' 'videos' %}?path_id={{ path.id }}" class="choose-button">Go to Videos</a>
+            </div>
+            <div class="card">
+                <h4>Learning Resources</h4>
+                <p>Access additional materials to support your learning journey.</p>
+                <a href="{% url 'dynamic_content' 'resources' %}?path_id={{ path.id }}" class="choose-button">Go to Resources</a>
+            </div>
+            <div class="card">
+                <h4>Project</h4>
+                <p>Apply your knowledge through hands-on projects.</p>
+                <a href="{% url 'dynamic_content' 'projects' %}?path_id={{ path.id }}" class="choose-button">Go to Projects</a>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}

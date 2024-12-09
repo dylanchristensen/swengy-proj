@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}{{ path.name }} - {{ content_type|capfirst }}{% endblock title %}
+
+{% block content %}
+<div class="dynamic-content-section">
+    <h1>{{ path.name }} - {{ content_type|capfirst }}</h1>
+
+    {% if content_type == 'videos' %}
+        <h2>Videos</h2>
+        <ul class="content-list">
+            {% for video in content %}
+                <li class="content-item">
+                    <h3>{{ video.title }}</h3>
+                    <iframe src="{{ video.video_url }}" frameborder="0" allowfullscreen></iframe>
+                </li>
+            {% endfor %}
+        </ul>
+
+    {% elif content_type == 'resources' %}
+        <h2>Resources</h2>
+        <ul class="content-list">
+            {% for resource in content %}
+                <li class="content-item">
+                    <h3>{{ resource.title }}</h3>
+                    <a href="{{ resource.content_url }}" target="_blank" class="content-link">View Resource</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+    {% elif content_type == 'projects' %}
+        <h2>Projects</h2>
+        <ul class="content-list">
+            {% for project in content %}
+                <li class="content-item">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+
+    {% else %}
+        <p class="error-message">Invalid content type selected.</p>
+    {% endif %}
+</div>
+{% endblock content %}

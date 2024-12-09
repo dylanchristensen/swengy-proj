@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<div class="section" data-theme-mode="dark" data-style-mode="round">
+    <div class="container">
+        <div class="text">
+            <div class="heading">
+                <div class="text-wrapper">Tagline text</div>
+                <div class="div">Your future awaits</div>
+                <p class="supporting-text">
+                    Pick your path from the selections available. More paths are added regularly, so be sure to check back soon!
+                </p>
+            </div>
+        </div>
+        
+        <!-- Features Section -->
+        <div class="cards">
+            <!-- Game Development -->
+            <div class="card">
+                <div class="headline">Game Development</div>
+                <p class="description">
+                    Bring interactive worlds to life. Learn the essentials of designing, coding, and building games.
+                </p>
+                <!-- Pass the path_id for Game Development (e.g., 1) -->
+                <a href="{% url 'view_path' %}?path_id=1" class="button dark">Pick this path!</a>
+            </div>
+            
+            <!-- Cybersecurity -->
+            <div class="card">
+                <div class="headline">Cybersecurity</div>
+                <p class="description">
+                    Defend systems and networks from attacks. Learn to prevent breaches and safeguard digital assets.
+                </p>
+                <a href="#" class="button disabled">Coming Soon</a>
+            </div>
+            
+            <!-- AI/ML -->
+            <div class="card">
+                <div class="headline">AI/ML</div>
+                <p class="description">
+                    Design intelligent systems that learn and adapt. Explore cutting-edge artificial intelligence and machine learning techniques.
+                </p>
+                <a href="#" class="button disabled">Coming Soon</a>
+            </div>
+            
+            <!-- Data Science -->
+            <div class="card">
+                <div class="headline">Data Science</div>
+                <p class="description">
+                    Harness data to uncover insights. Learn to analyze and interpret data for strategic decision-making.
+                </p>
+                <a href="#" class="button disabled">Coming Soon</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
